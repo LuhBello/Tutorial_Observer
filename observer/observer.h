@@ -2,36 +2,37 @@
 	#define OBSERVER_H
 	#include "common.h"
 	/**
-	 * Defining a 'interface-a-like' for the observer
+	 * Definición del Patrón Observer
 	 */
 
 	typedef struct __observer {
 		/**
-		 * Method for performing garbage collection
+		 * Método para liberar el espacio en memoria usado por el Observer
 		 */
 		void (*destroy)(struct __observer *);
 		/**
-		 * A reference to the concrete OBSERVER
+		 * Hace referencia al observador en concreto
 		 */
-		void* impl;
+		void* impl;     //una variable que almacena la dirección de un objeto cualquiera, en este caso de tipo Observer
 		/**
-		 * A method that any subject is able to trigger
+		 *Es un método usado por los subject para que sea más fácil el uso su lista de observadores
+		 * no tiene otro uso realmente.
 		 */
-		void (*notify)(struct __observer*, int, void *);
+		void (*notify)(struct __observer*, void *); //es la dirección de las notificaciones (realmente no se està usando
 		/**
-		 * The notify implementation (the actual function that is going to
-		 * be triggered)
+		 * The notify implementation (es la función actual que va a ser activada), es decir, es la implementación de la notificación
+		 * que hace el Subject, en este caso, el Crupier(quien lanza la bola).
 		 */
-		void (*notifyImpl)(void*, int, void*);
+		void (*notifyImpl)(void*,void*);      //es una dirección que apunta a metodo que tiene dichos parametro
 	} Observer;
 
 
 	/**
-	 * Constructor, allocate memory and set up credentials.
-	 * @param vendor name of the observer manufacturer
-	 * @param serial serial number
-	 * @return an instance of Observer
+	 * Constructor, reserva en la memoria e inicializa las credenciales
+	 * @param impl  (es el primer parámetro) este se refiere al observer en sí, en este caso sería al "apostardor" 
+	 * @param serial (segundo parámetro) es el método "notifyImpl"
+	 * @return la instancia del nuevo Observador
 	 */
-	Observer * observerNew(void*, void (*)(void*, int, void*));
+	Observer * observerNew(void*, void (*)(void*, int, void*));  
 
 #endif

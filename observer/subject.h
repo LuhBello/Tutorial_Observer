@@ -3,44 +3,42 @@
 	#include "observer.h"
 
 	/**
-	 * The interface for the subject
+	 * Es una interfaz para los Subjects
 	 */
 
 	typedef struct __subject
 	{
 		int type;
 		/**
-		 * Destructor for the Subject
+		 * Desctructor para el subject
 		 */
 		void (*destroy)(struct __subject *);
 		/**
-		 * Referente to the concrete Subject object
+		 *Referencia al subject en concreto
 		 */
 		void * impl;
 		/**
-		 * A list of observes have ben are registered for this subject
-		 * object.
+		 *Es la lista de los observadores que se han suscrito al subject en concreto.
 		 */
-		Observer * observers[MAX_OBSERVERS];
-		/**
-		 * The method that allows observers to register for this
-		 * subject object.
+		Observer * observers[MAX_OBSERVERS];  //MAX_OBSERVERS  es el número 20
+			/**
+		 * Es el método que usará para suscrbir observadores a su lista y así asociarlos
 		 */
 		int (*registerObserver)(struct __subject*, Observer*);
 		/**
-		 * Lets observes unregister from this subject
+		 * Es para desuscribir los observadores
 		 */
 		int (*unregisterObserver)(struct __subject *, Observer*);
 		/**
-		 * When fired, triggers notify method of all of the registered
-		 * observers.
+		 * Cuando haya un evento, se llama este método para notificarselos a los observadores
 		 */
 		void (*notifyObservers)(struct __subject*);
 	} Subject;
 
 	/**
-	 * Constructor for the Subject
+	 * Constructor del Subject, este tiene como parámetro una variable que apunta a un dirección de cualquier cosa,
+	 * en este caso, es el Crupier.
 	 */
-	Subject * subjectNew(void*, int);
+	Subject * subjectNew(void*);
 
 #endif
