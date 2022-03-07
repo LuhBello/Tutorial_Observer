@@ -33,6 +33,6 @@
 	 * @param serial (segundo parámetro) es el método "notifyImpl"
 	 * @return la instancia del nuevo Observador
 	 */
-	Observer * observerNew(void*, void (*)(void*, int, void*));  
+	Observer * observerNew(void*, void (*)(void*,  void*));  
 
 #endif

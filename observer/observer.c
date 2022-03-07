@@ -9,7 +9,7 @@ static void _destroy(Observer* this)
 {
 	if (this != NULL) {        																																//Verifica que el observador no sea nulo
 		free(this);        																																		//Libera el espacio en memoria usado por el observador.
-		this = NULL;           																																 //Vuelve nulo el observador
+		this = NULL;           																																 //Vuelve nulo el observador																	
 	}
 }
 /*
