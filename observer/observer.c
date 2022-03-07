@@ -23,7 +23,7 @@ static void _notify(Observer *this, void * subject)
 	/*
 	 * Constructor, reserva en la memoria e inicializa las credenciales
 	 */
-Observer* observerNew(void* impl, void (*notifyImpl)(void*, int, void*))
+Observer* observerNew(void* impl, void (*notifyImpl)(void*,void*))
 {
 	Observer* this = (Observer *) malloc(sizeof(*this));																//Primero se debe reservar el espacio en memoria que contendrá al observador.
 
