@@ -1,4 +1,5 @@
 #include "apostador.h"
+ #include "stddef.h"
 
 static void _destroy(Apostador* this)
 {
@@ -10,24 +11,25 @@ static void _destroy(Apostador* this)
 	}
 }
 
-static void _apostar(Apostador* this, __int16_t fichas, Crupier* crup){
+static void _apostar(Apostador* this, int fichas, Crupier* crup){
     crup->registerObserver(crup, this->observer);
     printf("El jugador %s apuesta %d fichas en la ruleta del Crupier %s\n", this->name, fichas, crup->name);
 }
 
 static void _handleAciertoEvent(Apostador* this, Crupier* crup){
+    printf("%s\n", "Escuchó");
     int N=9;
     int M= 1;
     int i=0;
     int numero = rand () % (N-M+1) + M; 
     char cuadro[8]= "NUM";
     for(;i<8;i++){
-    	if(cuadro[i]==NULL){
+    	if(cuadro[i]=='\0'){
     		cuadro[i]=numero+'0';
     		break;
     	}
     }
-    if(strcmp(cuadro, crup->getEvent) == 0){
+    if(strcmp(cuadro,(char *) crup->getEvent) == 0){
         printf("El jugador %s ha ganado con %s",this->name, cuadro);
     }
 

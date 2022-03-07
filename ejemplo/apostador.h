@@ -11,7 +11,7 @@
 		char* name;
 		void (*lanzar)(struct __apostador*);
 		void (*destroy)(struct __apostador*);
-		void (*apostar)(struct __apostador*, __int16_t *,Crupier*);
+		void (*apostar)(struct __apostador*, int,Crupier*);
 
 		Observer* observer;
 	}Apostador;

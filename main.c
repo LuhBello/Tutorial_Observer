@@ -8,10 +8,10 @@ int main(int argc, char const *argv[])
 {
     Crupier* robert= CRUPIER_create("Robert");
     Apostador* sara= APOSTADOR_create("Sara");
-    Apostador* emma= APOSTADOR_create("emma");
+    Apostador* emma= APOSTADOR_create("Emma");
 
-    sara->apostar(sara, (__int16_t*)5,  robert);
-    emma->apostar(emma, (__int16_t*)5,  robert);
+    sara->apostar(sara, 5,  robert);
+    emma->apostar(emma, 5,  robert);
 
     robert->lanzar(robert);
 

@@ -1,6 +1,6 @@
 #include "crupier.h"
 
-static void _destroy(Crupier* this)
+static void _destroyC(Crupier* this)
 {
 	this->subject->destroy(this->subject);
 
@@ -75,10 +75,10 @@ static int _unregisterObserver(Crupier * this, Observer* observer) {
   return this->subject->unregisterObserver(this->subject, observer);
 }
 
-Crupier* CRUEPIER_create(char* name){
+Crupier* CRUPIER_create(char* name){
     Crupier* this=(Crupier *) malloc(sizeof(*this));
     this->name=name;
-    this->destroy= _destroy;
+    this->destroy= _destroyC;
     this->getEvent= _getEvent;
     this->lanzar= _lanzar;
 
